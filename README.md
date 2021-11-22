@@ -1,17 +1,17 @@
-# Project Name
+# 15 Puzzle
 
 This repository is a final project (Java GUI) from Object-Oriented Programming Class, Teknik Informatika Universitas Padjadjaran. 
 
 [Challenge Guidelines](challenge-guideline.md)
 
-**Please create a description for this project here**
+**Proyek untuk mengimplementasikan game 15 Puzzle yang merupakan puzzle dengan size tile(petak) 4x4 dimana mengharuskan pemain untuk menyusun puzzle menjadi berurutan secara horizontal ke arah kanan dari baris paling atas dengan cara mengklik petak yang berisi angka sehingga bisa berpindah ke petak yang kosong sampai puzzle terselesaikan**
 
 ## Credits
 | NPM           | Name        |
 | ------------- |-------------|
-| 140810xx00xx  | John Doe    |
-| 140810xx00xx  | Jane Doe    |
-| 140810xx00xx  | Lorem Ipsum |
+| 140810200021  | Rifqi Akmal Fauzi    |
+| 140810200031  | Ahmad Yahya Salim	|
+| 140810200055  | Wafa Tsabita |
 
 ## Change log
 - **[Sprint Planning](changelog/sprint-planning.md) - (planning date)** 
