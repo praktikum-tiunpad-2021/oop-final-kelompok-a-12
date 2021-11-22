@@ -11,9 +11,6 @@
 ## Sprint Backlog Keseluruhan 
 | ID  | Title/Desc | Asignee | 
 | --- | ---------- | ------- | 
-| 1.1 | Preparing the x | Jane Doe | 
-| 2.2 | Make the x | John Doe | 
-
 | 1.1 |	Inisialisasi OOP dan JFrame | semua |
 | 1.2 | Membuat kerangka class puzzle |
 | 2.1 |	Membuat grid dan tiles puzzle awal |
