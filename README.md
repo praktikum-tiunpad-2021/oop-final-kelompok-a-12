@@ -14,13 +14,12 @@ This repository is a final project (Java GUI) from Object-Oriented Programming C
 | 140810200055  | Wafa Tsabita |
 
 ## Change log
-- **[Sprint Planning](changelog/sprint-planning.md) - (planning date)** 
-   -  Short changes 1
-   - Short changes 2
+- **[Sprint Planning](changelog/sprint-planning.md) - (22/11/2021)** 
+   - diskusi rencana awal backlog
 
-- **[Sprint 1](changelog/sprint-1.md) - (date from x until x)** 
-   - Short changes 1
-   - Short changes 2
+- **[Sprint 1](changelog/sprint-1.md) - (16/11/2021 - 22/11/2021)** 
+   - Inisialisasi OOP dan JFrame
+   - Membuat kerangka class puzzle
 
 - **[Sprint 2](changelog/sprint-2.md) - (date from x until x)** 
    - Short changes 1

@@ -12,11 +12,11 @@
 | ID  | Title/Desc | Asignee | 
 | --- | ---------- | ------- | 
 | 1.1 |	Inisialisasi OOP dan JFrame | semua |
-| 1.2 | Membuat kerangka class puzzle |
-| 2.1 |	Membuat grid dan tiles puzzle awal |
-| 2.2 | Membuat listener untuk mouse |
-| 2.3 | Membuat method solvable puzzle	|
-| 2.4 | Membuat method reset |
+| 1.2 | Membuat kerangka class puzzle | semua |
+| 2.1 |	Membuat grid dan tiles puzzle awal | Yahya |
+| 2.2 | Membuat listener untuk mouse | Yahya |
+| 2.3 | Membuat method solvable puzzle	| Rifqi |
+| 2.4 | Membuat method reset | Wafa |
 | 3.1 | Membuat animasi ketika ubin di klik | semua |
 | 3.2 | Memeriksa error dan improve tampilan | semua |
 
@@ -24,7 +24,7 @@
 | ID  | Title/Desc | Asignee | 
 | --- | ---------- | ------- | 
 | 1.1 |	Inisialisasi OOP dan JFrame | semua |
-| 1.2 | Membuat kerangka class puzzle |
+| 1.2 | Membuat kerangka class puzzle | semua |
 
 ## Retrospective 
 
