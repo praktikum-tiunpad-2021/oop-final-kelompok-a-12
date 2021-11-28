@@ -2,19 +2,25 @@ package puzzle;
 
 import java.util.Random;
 import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
-public class puzzle {
-    private boolean solved;
-    private int blankTileIndex;
-    private double blankX0;
-    private double blankX1;
-    private double blankY0;
-    private double blankY1;
 
-    public puzzle(){
-        this.solved = false;
+public class puzzle {
+    private boolean solveableStatus;
+    private Label[] tiles;
+    private int n;
+    private int blankTileIndex;
+    private double blankX0; // koordinat x paling kiri dari tile kosong
+    private double blankX1; // koordinat x paling kanan dari tile kosong
+    private double blankY0; // koordinat y paling kiri dari tile kosong
+    private double blankY1; // koordinat y paling kanan dari tile kosong
+
+    public puzzle(int n ,Label[] tiles){
+        this.solveableStatus = false;
+        this.tiles = tiles;
+        this.n = n;
     }
 
     public void swapContent(Label a, Label b){
@@ -27,7 +33,7 @@ public class puzzle {
         b.setText(x);
     }
 
-    public void tilesMovement(Pane p, Label[] l){
+    public void tilesMovement(Pane p){
         p.setOnMousePressed(event -> {  
             if(event.getX()>=this.blankX0+50 && 
                 event.getX()<=this.blankX1+50 &&
@@ -35,7 +41,7 @@ public class puzzle {
                 event.getY()<=this.blankY1
                 ){
             
-                swapContent(l[blankTileIndex], l[blankTileIndex+1]);
+                swapContent(tiles[blankTileIndex], tiles[blankTileIndex+1]);
                 blankTileIndex = blankTileIndex+1;
                 blankPositionChange('r');
 
@@ -44,7 +50,7 @@ public class puzzle {
                 event.getY()>=this.blankY0 &&
                 event.getY()<=this.blankY1
             ){
-                swapContent(l[blankTileIndex], l[blankTileIndex-1]);
+                swapContent(tiles[blankTileIndex], tiles[blankTileIndex-1]);
                 blankTileIndex = blankTileIndex-1;
                 blankPositionChange('l');
 
@@ -53,8 +59,8 @@ public class puzzle {
                 event.getY()>=this.blankY0-50 &&
                 event.getY()<=this.blankY1-50
             ){
-                swapContent(l[blankTileIndex], l[blankTileIndex-4]);
-                blankTileIndex = blankTileIndex-4;
+                swapContent(tiles[blankTileIndex], tiles[blankTileIndex-n]);
+                blankTileIndex = blankTileIndex-n;
                 blankPositionChange('u');
 
             } else if(event.getX()>=this.blankX0 && 
@@ -62,73 +68,105 @@ public class puzzle {
                 event.getY()>=this.blankY0+50 &&
                 event.getY()<=this.blankY1+50
             ){
-                swapContent(l[blankTileIndex], l[blankTileIndex+4]);
-                blankTileIndex = blankTileIndex+4;
+                swapContent(tiles[blankTileIndex], tiles[blankTileIndex+n]);
+                blankTileIndex = blankTileIndex+n;
                 blankPositionChange('d');
             }
         });
 
     }
 
-    public void blankPositionChange(char dir){
-        if (dir=='r'){
+    public void blankPositionChange(char direction){
+        if (direction=='r'){
             blankX0 += 50;
             blankX1 += 50;
-        } else if (dir=='l'){
+        } else if (direction=='l'){
             blankX0 -= 50;
             blankX1 -= 50;
-        } else if (dir=='u'){
+        } else if (direction=='u'){
             blankY0 -= 50;
             blankY1 -= 50;
-        } else if (dir=='d'){
+        } else if (direction=='d'){
             blankY0 += 50;
             blankY1 += 50;
         }
     }
 
-    public void initialContent(int n, Label[] l){
+    public void setTilesPosition(int n){
+        for(int i =0; i<n*n ; i++){
+            int j = i;
+            int k = i;
+            int m = 0;
+            tiles[i].setLayoutX(50*(i%n));
+            while(k>=n){
+                m+=1;
+                k-=n;
+            }
+            tiles[j].setLayoutY(50*m);
+            i = j;
+        }
+    }
+
+    public void resetPuzzle(Button reset, Pane pane){
+        solveableStatus = false;
+        pane.getChildren().removeAll(tiles);
+        initialContent(n*n);
+        pane.getChildren().addAll(tiles);
+        setTilesPosition(n);
+    }
+
+    public void initialContent(int n){
         int[] arr = new int[n];
 
         for(int i =0; i<n ; i++){
             arr[i]= i+1;
         }
 
-        while(solved==false){
+        while(solveableStatus==false){
             arr = shuffle(arr);
             solveCheck(arr);
         }
 
         for(int i =0; i<n ; i++){
-            l[i] = new Label(Integer.toString(arr[i]));
+            tiles[i] = new Label(Integer.toString(arr[i]));
             if(arr[i]==n){
-                l[i].setText(" ");
+                tiles[i].setText(" ");
                 this.blankTileIndex = i;
             }
-            l[i].setMinSize(50, 50);
-            l[i].setStyle("-fx-font: 20 arial;");
-            l[i].setAlignment(Pos.CENTER);
+            tiles[i].setMinSize(50, 50);
+            tiles[i].setStyle("-fx-font: 20 arial;");
+            tiles[i].setAlignment(Pos.CENTER);
         }
     }
 
-    public void blankPosition(Label[] l){
-        blankX0 = l[blankTileIndex].getLayoutX();
-        blankX1 = l[blankTileIndex].getLayoutX() + 50;
-        blankY0 = l[blankTileIndex].getLayoutY();
-        blankY1 = l[blankTileIndex].getLayoutY() + 50;
+    public void blankPosition(){
+        blankX0 = tiles[blankTileIndex].getLayoutX();
+        blankX1 = tiles[blankTileIndex].getLayoutX() + 50;
+        blankY0 = tiles[blankTileIndex].getLayoutY();
+        blankY1 = tiles[blankTileIndex].getLayoutY() + 50;
     }
 
     public void solveCheck(int[] arr){
-        int inv = 0;
+        int inversion = 0;
         for(int i =0; i<15 ; i++){
             if(arr[i]>arr[i+1]){
-                inv+=1;
+                inversion += 1;
             }
         }
-        if(inv%2 ==0){
-            this.solved = true;
+        if(inversion%2 ==0){
+            solveableStatus = true;
         }else{
-            this.solved = false;
+            solveableStatus = false;
         }
+    }
+
+    public boolean finishedCheck(){
+        for(int i = 0; i<16; i++){
+            int check = Integer.parseInt(tiles[i].getText());
+            if(check != i+1){
+                return false;
+            }
+        } return true;
     }
 
     public int[] shuffle(int[] arr){
