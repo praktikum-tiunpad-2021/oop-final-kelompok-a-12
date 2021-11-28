@@ -11,14 +11,14 @@
 ## Sprint Overview
 | Planned (n)   | Completed (n) |
 | ------------- |-------------- |
-| 2             | n             |
+| 2             | 2             |
 
 ## Sprint 1 Backlog
 
 | ID  | Title/Desc | Asignee | Status |
 | --- | ---------- | ------- | ------ |
-| 1.1 |	Inisialisasi OOP dan JFrame | semua |
-| 1.2 | Membuat kerangka class puzzle | semua |
+| 1.1 |	Inisialisasi OOP dan JFrame | semua | DONE |
+| 1.2 | Membuat kerangka class puzzle | semua | DONE |
 
 ## Retrospective 
 

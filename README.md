@@ -18,12 +18,12 @@ This repository is a final project (Java GUI) from Object-Oriented Programming C
    - diskusi rencana awal backlog
 
 - **[Sprint 1](changelog/sprint-1.md) - (16/11/2021 - 22/11/2021)** 
-   - Inisialisasi OOP dan JFrame
+   - Inisialisasi OOP dan JFX
    - Membuat kerangka class puzzle
 
 - **[Sprint 2](changelog/sprint-2.md) - (date from x until x)** 
-   - Short changes 1
-   - Short changes 2
+   - Membuat Puzzle untuk 16 tiles
+   - Menambahkan pergerakan dengan mouse listener
    
 - **[Sprint 3](changelog/sprint-3.md) - (date from x until x)** 
    - Short changes 1
@@ -31,7 +31,7 @@ This repository is a final project (Java GUI) from Object-Oriented Programming C
 
 ## Running The App
 
-TO;DO with steps
+Jalankan `gradlew run` pada folder repositori ini
 
 ## Classes Used
 

@@ -1,31 +1,33 @@
 # Scrum Report (Sprint 2)
-| From dd/mm/yyyy to dd/mm/yyyy
+| From 23/11/2021 to 29/11/2021
 
 ## Team (Insert your name)
 | NPM           | Name        |
 | ------------- |-------------|
-| 140810xx00xx  | John Doe    |
-| 140810xx00xx  | Jane Doe    |
-| 140810xx00xx  | Lorem Ipsum |
+| 140810200021  | Rifqi Akmal Fauzi    |
+| 140810200031  | Ahmad Yahya Salim    |
+| 140810200055  | Wafa Tsabita |
 
 ## Sprint Overview
 | Planned (n)   | Completed (n) |
 | ------------- |-------------- |
-| n             | n             |
+| 4             | 2             |
 
 ## Sprint 2 Backlog
 
-| ID  | Title/Desc | Asignee | Status |
-| --- | ---------- | ------- | ------ |
-| 2.1 | Preparing the x | Jane Doe | DONE |
-| 2.2 | Make the x | John Doe | FAILED |
+| ID  | Title/Desc | Asignee | 
+| --- | ---------- | ------- | 
+| 2.1 |	Membuat grid dan tiles puzzle awal | Yahya | DONE |
+| 2.2 | Membuat listener untuk mouse | Yahya | DONE |
+| 2.3 | Membuat method solvable puzzle	| Rifqi | |
+| 2.4 | Membuat method reset | Wafa | |
 
 ## Retrospective 
 
-Sprint kemarin dianggap terlalu sedikit sehingga diperlukan adanya penyesuaian tugas. Lorem ipsum dolor sit amet
+Sprint kemarin dianggap terlalu sedikit sehingga diperlukan adanya penyesuaian tugas.
 
 ## Next Sprint Backlog (Sprint 3)
 | ID  | Title/Desc | Asignee | 
 | --- | ---------- | ------- | 
-| 3.1 | Preparing the x | Jane Doe | 
-| 3.2 | Make the x | John Doe | 
+| 3.1 | Membuat animasi ketika ubin di klik | semua |
+| 3.2 | Memeriksa error dan improve tampilan | semua |
