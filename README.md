@@ -21,11 +21,11 @@ This repository is a final project (Java GUI) from Object-Oriented Programming C
    - Inisialisasi OOP dan JFX
    - Membuat kerangka class puzzle
 
-- **[Sprint 2](changelog/sprint-2.md) - (date from x until x)** 
+- **[Sprint 2](changelog/sprint-2.md) - (23/11/2021 - 29/11/2021)** 
    - Membuat Puzzle untuk 16 tiles
    - Menambahkan pergerakan dengan mouse listener
    
-- **[Sprint 3](changelog/sprint-3.md) - (date from x until x)** 
+- **[Sprint 3](changelog/sprint-3.md) - (30/11/2021 - 6/12/2021)** 
    - Short changes 1
    - Short changes 2
 
