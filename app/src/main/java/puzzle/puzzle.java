@@ -42,8 +42,8 @@ public class puzzle {
     public void tilesMovement(){
         pane.setOnMousePressed(event -> {  
             //jika tiles yang diklik berada di kanan tiles blank
-            if(event.getX()>=blankX0+50 && 
-                event.getX()<=blankX1+50 &&
+            if(event.getX()>=blankX0+100 && 
+                event.getX()<=blankX1+100 &&
                 event.getY()>=blankY0 &&
                 event.getY()<=blankY1
                 ){
@@ -54,8 +54,8 @@ public class puzzle {
                 finishedCheck();
             
             //jika tiles yang diklik berada di kiri tiles blank
-            } else if(event.getX()>=blankX0-50 && 
-                event.getX()<=blankX1-50 &&
+            } else if(event.getX()>=blankX0-100 && 
+                event.getX()<=blankX1-100 &&
                 event.getY()>=blankY0 &&
                 event.getY()<=blankY1
             ){
@@ -67,8 +67,8 @@ public class puzzle {
             //jika tiles yang diklik berada di atas tiles blank
             } else if(event.getX()>=blankX0 && 
                 event.getX()<=blankX1 &&
-                event.getY()>=blankY0-50 &&
-                event.getY()<=blankY1-50
+                event.getY()>=blankY0-100 &&
+                event.getY()<=blankY1-100
             ){
                 swapContent(tiles[blankTileIndex], tiles[blankTileIndex-n]);
                 blankTileIndex = blankTileIndex-n;
@@ -78,8 +78,8 @@ public class puzzle {
             //jika tiles yang diklik berada di bawah tiles blank
             } else if(event.getX()>=blankX0 && 
                 event.getX()<=blankX1 &&
-                event.getY()>=blankY0+50 &&
-                event.getY()<=blankY1+50
+                event.getY()>=blankY0+100 &&
+                event.getY()<=blankY1+100
             ){
                 swapContent(tiles[blankTileIndex], tiles[blankTileIndex+n]);
                 blankTileIndex = blankTileIndex+n;
@@ -92,17 +92,17 @@ public class puzzle {
     // pergeseran koordinat tile blank tergantung arah pindah
     public void blankPositionChange(char direction){
         if (direction=='r'){
-            blankX0 += 50;
-            blankX1 += 50;
+            blankX0 += 100;
+            blankX1 += 100;
         } else if (direction=='l'){
-            blankX0 -= 50;
-            blankX1 -= 50;
+            blankX0 -= 100;
+            blankX1 -= 100;
         } else if (direction=='u'){
-            blankY0 -= 50;
-            blankY1 -= 50;
+            blankY0 -= 100;
+            blankY1 -= 100;
         } else if (direction=='d'){
-            blankY0 += 50;
-            blankY1 += 50;
+            blankY0 += 100;
+            blankY1 += 100;
         }
     }
 
@@ -112,12 +112,12 @@ public class puzzle {
             int j = i;
             int k = i;
             int m = 0;
-            tiles[i].setLayoutX(50*(i%n));
+            tiles[i].setLayoutX(100 * (i%n));
             while(k>=n){
                 m+=1;
                 k-=n;
             }
-            tiles[j].setLayoutY(50*m);
+            tiles[j].setLayoutY(100 * m);
             i = j;
         }
     }
@@ -154,8 +154,8 @@ public class puzzle {
                 tiles[i].setText(" ");
                 blankTileIndex = i;
             }
-            tiles[i].setMinSize(50, 50);
-            tiles[i].setStyle("-fx-font: 20 arial;");
+            tiles[i].setMinSize(100, 100);
+            tiles[i].setStyle("-fx-font: 30 arial;");
             tiles[i].setAlignment(Pos.CENTER);
         }
     }
@@ -163,9 +163,9 @@ public class puzzle {
     // melakukan set untuk posisi tile blank
     public void setBlankPosition(){
         blankX0 = tiles[blankTileIndex].getLayoutX();
-        blankX1 = tiles[blankTileIndex].getLayoutX() + 50;
+        blankX1 = tiles[blankTileIndex].getLayoutX() + 100;
         blankY0 = tiles[blankTileIndex].getLayoutY();
-        blankY1 = tiles[blankTileIndex].getLayoutY() + 50;
+        blankY1 = tiles[blankTileIndex].getLayoutY() + 100;
     }
 
     // melakukan cek apakah angka puzzle mungkin untuk diselesaikan 
@@ -199,12 +199,20 @@ public class puzzle {
             if(blankIndex>i) blankPos+=1;
         }
 
-        if(inversion%2 ==0 && blankPos%2 == 1){
-            solveableStatus = true;
-        } else if(inversion%2 ==1 && blankPos%2 == 0){
-            solveableStatus = true;
-        }else{
-            solveableStatus = false;
+        if(n%2 == 1){ // jika n atau sisi puzzle ganjil
+            if(inversion%2 == 0){
+                solveableStatus = true;
+            } else{
+                solveableStatus = false;
+            }
+        } else if(n%2 == 0){ // jika n atau sisi puzzle genap
+            if(inversion%2 ==0 && blankPos%2 == 1){
+                solveableStatus = true;
+            } else if(inversion%2 ==1 && blankPos%2 == 0){
+                solveableStatus = true;
+            }else{
+                solveableStatus = false;
+            }
         }
     }
 
@@ -232,12 +240,12 @@ public class puzzle {
 
     // memberikan view button hijau sebagai penanda puzzle telah selesai tersusun
     public void finishedView(){
-        green.setStyle("-fx-background-color: #00ff00");
+        green.setStyle("-fx-background-color: #00ff00;-fx-font: 20 arial;");
         green.setText("Selesai!");
         green.setOpacity(1.0);
         pane.getChildren().add(green);
-        green.setMinHeight(200);
-        green.setMinWidth(200);
+        green.setMinHeight(n*100);
+        green.setMinWidth(n*100);
         green.setLayoutX(0);
     }
 

@@ -18,7 +18,8 @@ public class Main extends Application{
     }
 
     public void start(Stage primaryStage)throws Exception{
-        int n = 4;
+        int n = 4; // besar n atau banyak sisi puzzle bisa diganti disini
+                   // namun belum tersedia perubahan dengan GUI untuk user
         Label[] tiles = new Label[n*n];
         Pane pane = new Pane();
         Button reset = new Button("Reset Puzzle");
@@ -29,8 +30,10 @@ public class Main extends Application{
         pane.getChildren().add(reset);      // menambahkan tombol reset di bawahnya
         fifPuz.setTilesPosition();          // set posisi dari tiles
 
-        reset.setMinWidth(200);             // set lebar minimal tombol reset
-        reset.setLayoutY(200);              // set letak koordinat y tombol reset
+        reset.setStyle("-fx-background-color: #4287f5;-fx-font: 15 arial;");
+        reset.setMinWidth(n*100);           // set lebar minimal tombol reset
+        reset.setMinHeight(60);             // set tinggi minimal tombol reset
+        reset.setLayoutY(n*100);            // set letak koordinat y tombol reset
 
         fifPuz.setBlankPosition();          // set blank tile position
         fifPuz.tilesMovement();             // enable movement tile dari klik mouse
