@@ -8,10 +8,10 @@ import javafx.scene.layout.Pane;
 
 
 public class puzzle {
-    private boolean solveableStatus;
     private Pane pane;
     private Label[] tiles;
     private Button green;
+    private boolean solveableStatus;
     private int n;
     private int blankTileIndex;
     private double blankX0; // koordinat x paling kiri dari tile kosong
@@ -27,6 +27,7 @@ public class puzzle {
         this.n = n;
     }
 
+    // swap isi antara dua tiles
     public void swapContent(Label a, Label b){
         String x;
         String y;
@@ -37,43 +38,48 @@ public class puzzle {
         b.setText(x);
     }
 
+    // logika dalam klik dari mouse beserta listener koordinat mouse
     public void tilesMovement(){
         pane.setOnMousePressed(event -> {  
-            if(event.getX()>=this.blankX0+50 && 
-                event.getX()<=this.blankX1+50 &&
-                event.getY()>=this.blankY0 &&
-                event.getY()<=this.blankY1
+            //jika tiles yang diklik berada di kanan tiles blank
+            if(event.getX()>=blankX0+50 && 
+                event.getX()<=blankX1+50 &&
+                event.getY()>=blankY0 &&
+                event.getY()<=blankY1
                 ){
             
                 swapContent(tiles[blankTileIndex], tiles[blankTileIndex+1]);
                 blankTileIndex = blankTileIndex+1;
                 blankPositionChange('r');
                 finishedCheck();
-
-            } else if(event.getX()>=this.blankX0-50 && 
-                event.getX()<=this.blankX1-50 &&
-                event.getY()>=this.blankY0 &&
-                event.getY()<=this.blankY1
+            
+            //jika tiles yang diklik berada di kiri tiles blank
+            } else if(event.getX()>=blankX0-50 && 
+                event.getX()<=blankX1-50 &&
+                event.getY()>=blankY0 &&
+                event.getY()<=blankY1
             ){
                 swapContent(tiles[blankTileIndex], tiles[blankTileIndex-1]);
                 blankTileIndex = blankTileIndex-1;
                 blankPositionChange('l');
                 finishedCheck();
 
-            } else if(event.getX()>=this.blankX0 && 
-                event.getX()<=this.blankX1 &&
-                event.getY()>=this.blankY0-50 &&
-                event.getY()<=this.blankY1-50
+            //jika tiles yang diklik berada di atas tiles blank
+            } else if(event.getX()>=blankX0 && 
+                event.getX()<=blankX1 &&
+                event.getY()>=blankY0-50 &&
+                event.getY()<=blankY1-50
             ){
                 swapContent(tiles[blankTileIndex], tiles[blankTileIndex-n]);
                 blankTileIndex = blankTileIndex-n;
                 blankPositionChange('u');
                 finishedCheck();
 
-            } else if(event.getX()>=this.blankX0 && 
-                event.getX()<=this.blankX1 &&
-                event.getY()>=this.blankY0+50 &&
-                event.getY()<=this.blankY1+50
+            //jika tiles yang diklik berada di bawah tiles blank
+            } else if(event.getX()>=blankX0 && 
+                event.getX()<=blankX1 &&
+                event.getY()>=blankY0+50 &&
+                event.getY()<=blankY1+50
             ){
                 swapContent(tiles[blankTileIndex], tiles[blankTileIndex+n]);
                 blankTileIndex = blankTileIndex+n;
@@ -83,6 +89,7 @@ public class puzzle {
         });
     }
 
+    // pergeseran koordinat tile blank tergantung arah pindah
     public void blankPositionChange(char direction){
         if (direction=='r'){
             blankX0 += 50;
@@ -99,6 +106,7 @@ public class puzzle {
         }
     }
 
+    // set lokasi dari tilse yang berupa array of Label
     public void setTilesPosition(){
         for(int i =0; i<n*n ; i++){
             int j = i;
@@ -114,6 +122,7 @@ public class puzzle {
         }
     }
 
+    // dijalankan ketika tombol reset ditekan
     public void resetPuzzle(Button reset){
         solveableStatus = false;
         pane.getChildren().removeAll(tiles);
@@ -124,6 +133,7 @@ public class puzzle {
         pane.getChildren().remove(green);
     }
 
+    // melakukan pengisian angka acak pada label tiles
     public void initialContent(){
         int[] arr = new int[n*n];
 
@@ -131,16 +141,18 @@ public class puzzle {
             arr[i]= i+1;
         }
 
+        // akan terus diacak sampai puzzle mungkin untuk diselesaikan
         while(solveableStatus==false){
             arr = shuffle(arr);
             solveCheck(arr);
         }
 
+        // input angka hasil acak menjadi teks pada label
         for(int i =0; i<n*n ; i++){
             tiles[i] = new Label(Integer.toString(arr[i]));
             if(arr[i]==n*n){
                 tiles[i].setText(" ");
-                this.blankTileIndex = i;
+                blankTileIndex = i;
             }
             tiles[i].setMinSize(50, 50);
             tiles[i].setStyle("-fx-font: 20 arial;");
@@ -148,6 +160,7 @@ public class puzzle {
         }
     }
 
+    // melakukan set untuk posisi tile blank
     public void setBlankPosition(){
         blankX0 = tiles[blankTileIndex].getLayoutX();
         blankX1 = tiles[blankTileIndex].getLayoutX() + 50;
@@ -155,11 +168,13 @@ public class puzzle {
         blankY1 = tiles[blankTileIndex].getLayoutY() + 50;
     }
 
+    // melakukan cek apakah angka puzzle mungkin untuk diselesaikan 
     public void solveCheck(int[] arr){
         int inversion = 0;
         int blankIndex = 0;
         int blankPos = 0;
        
+        // menghitung jumlah inversi
         for(int i = n*n-1; i>0 ; i--){
             int j = i-1;
             while(j>=0){
@@ -170,11 +185,14 @@ public class puzzle {
             }
         }
 
+        // mencari posisi index pada array dimana berisi angka n*n (blank)
         for(int i =0; i<n*n ; i++){
             if(arr[i] == n*n){
                 blankIndex = i;
             }
         }
+
+        // mencari dimana posisi blank dihitung dari baris paling bawah
         int i = n*n-1;
         while(i>=-1){
             i-=n;
@@ -190,26 +208,29 @@ public class puzzle {
         }
     }
 
+    // cek apakah puzzle telah terselesaikan 
     public void finishedCheck(){
         int[] arr = new int[n*n];
         
+        // mengubah teks pada label (tiles) ke array 1D
         for(int i = 0; i<n*n; i++){
             int check;
             if(tiles[i].getText()!= " "){
                 check = Integer.parseInt(tiles[i].getText());
             } else check = n*n;
             arr[i] = check;
-
         } 
 
+        // cek apakah array berisi angka yang terurut
         int i = 0;
         while(i < n*n-1){
             if(arr[i] != i+1) break;
-            if(i==n*n-2 && arr[i]== i+1) finishedView();
+            if(i==n*n-2 && arr[i]== i+1) finishedView(); // angka telah terurut
             i++;
         }
     }
 
+    // memberikan view button hijau sebagai penanda puzzle telah selesai tersusun
     public void finishedView(){
         green.setStyle("-fx-background-color: #00ff00");
         green.setText("Selesai!");
@@ -220,6 +241,7 @@ public class puzzle {
         green.setLayoutX(0);
     }
 
+    // melakukan shuffle pada array 1D
     public int[] shuffle(int[] arr){
         Random rand = new Random();
         for(int i = 0; i < arr.length-1; i++) {
@@ -228,7 +250,6 @@ public class puzzle {
             arr[i] = arr[index];
             arr[index] = tmp;
         }
-
         return arr;
     }
 

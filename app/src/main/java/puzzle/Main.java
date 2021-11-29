@@ -24,17 +24,18 @@ public class Main extends Application{
         Button reset = new Button("Reset Puzzle");
         puzzle fifPuz = new puzzle(n,tiles, pane);
         
-        fifPuz.initialContent();
-        pane.getChildren().addAll(tiles);
-        pane.getChildren().add(reset);
-        fifPuz.setTilesPosition();
+        fifPuz.initialContent();            // mengisi angka
+        pane.getChildren().addAll(tiles);   // meletakkan label tiles pada pane
+        pane.getChildren().add(reset);      // menambahkan tombol reset di bawahnya
+        fifPuz.setTilesPosition();          // set posisi dari tiles
 
-        reset.setMinWidth(200);
-        reset.setLayoutY(200);
+        reset.setMinWidth(200);             // set lebar minimal tombol reset
+        reset.setLayoutY(200);              // set letak koordinat y tombol reset
 
-        fifPuz.setBlankPosition();
-        fifPuz.tilesMovement();
+        fifPuz.setBlankPosition();          // set blank tile position
+        fifPuz.tilesMovement();             // enable movement tile dari klik mouse
         
+        // anonymouse class untuk aksi saat tombol reset ditekan
         reset.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e){
                 fifPuz.resetPuzzle(reset);
