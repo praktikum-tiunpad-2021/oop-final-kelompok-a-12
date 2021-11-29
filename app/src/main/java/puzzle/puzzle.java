@@ -113,6 +113,7 @@ public class puzzle {
         initialContent(n*n);
         pane.getChildren().addAll(tiles);
         setTilesPosition(n);
+        setBlankPosition();
     }
 
     public void initialContent(int n){
@@ -139,7 +140,7 @@ public class puzzle {
         }
     }
 
-    public void blankPosition(){
+    public void setBlankPosition(){
         blankX0 = tiles[blankTileIndex].getLayoutX();
         blankX1 = tiles[blankTileIndex].getLayoutX() + 50;
         blankY0 = tiles[blankTileIndex].getLayoutY();

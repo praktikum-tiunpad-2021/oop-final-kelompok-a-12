@@ -32,7 +32,7 @@ public class Main extends Application{
         reset.setMinWidth(200);
         reset.setLayoutY(200);
 
-        fifPuz.blankPosition();
+        fifPuz.setBlankPosition();
         fifPuz.tilesMovement(pane);
         
         reset.setOnAction(new EventHandler<ActionEvent>() {
