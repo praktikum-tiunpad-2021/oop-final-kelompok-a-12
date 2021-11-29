@@ -22,22 +22,22 @@ public class Main extends Application{
         Label[] tiles = new Label[n*n];
         Pane pane = new Pane();
         Button reset = new Button("Reset Puzzle");
-        puzzle fifPuz = new puzzle(n,tiles);
+        puzzle fifPuz = new puzzle(n,tiles, pane);
         
-        fifPuz.initialContent(n*n);
+        fifPuz.initialContent();
         pane.getChildren().addAll(tiles);
         pane.getChildren().add(reset);
-        fifPuz.setTilesPosition(n);
+        fifPuz.setTilesPosition();
 
         reset.setMinWidth(200);
         reset.setLayoutY(200);
 
         fifPuz.setBlankPosition();
-        fifPuz.tilesMovement(pane);
+        fifPuz.tilesMovement();
         
         reset.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e){
-                fifPuz.resetPuzzle(reset, pane);
+                fifPuz.resetPuzzle(reset);
             };
         });
 
