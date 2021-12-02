@@ -31,9 +31,12 @@ This repository is a final project (Java GUI) from Object-Oriented Programming C
 
 ## Running The App
 
--Sesuaikan directori pada CMD atau Terminal pada folder [fifteenPuzzleGradle](fifteenPuzzleGradle)
+- Menggunakan Gradle
+1. Sesuaikan directori pada CMD atau Terminal pada folder [fifteenPuzzleGradle](fifteenPuzzleGradle)
 
--Jalankan `gradlew run` pada direktori tersebut
+2. Dalam direktori tersebut jalankan :
+   - `gradlew run`  untuk ukuran default 4 x 4 tiles
+   - `gradlew run --args="n"` untuk ukuran puzzle n x n
 
 ## Classes Used
 

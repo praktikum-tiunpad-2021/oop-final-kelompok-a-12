@@ -13,13 +13,25 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class Main extends Application{
+
     public static void main(String[] args) {
         launch(args);
     }
 
     public void start(Stage primaryStage)throws Exception{
-        int n = 4; // besar n atau banyak sisi puzzle bisa diganti disini
-                   // namun belum tersedia perubahan dengan GUI untuk user
+        String side = null;
+        if(this.getParameters().getRaw().toString().length()>2){
+            side = this.getParameters().getRaw().toString();
+        } 
+
+        int n = 4;
+        if(side!=null){
+            n =Character.getNumericValue(side.charAt(1));
+        }
+        // kustomisasi ukuran dengan menjalankan 
+        // gradlew run --args="n"
+        // dimana n adalah banyak sisi puzzle sehingga banyak tiles adalah n*n
+
         Label[] tiles = new Label[n*n];
         Pane pane = new Pane();
         Button reset = new Button("Reset Puzzle");
@@ -28,6 +40,7 @@ public class Main extends Application{
         fifPuz.initialContent();            // mengisi angka
         pane.getChildren().addAll(tiles);   // meletakkan label tiles pada pane
         pane.getChildren().add(reset);      // menambahkan tombol reset di bawahnya
+        //pane.setStyle("-fx-background-color: #998d6d");
         fifPuz.setTilesPosition();          // set posisi dari tiles
 
         reset.setStyle("-fx-background-color: #4287f5;-fx-font: 15 arial;");

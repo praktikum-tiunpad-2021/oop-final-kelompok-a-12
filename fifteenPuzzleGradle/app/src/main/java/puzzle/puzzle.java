@@ -18,6 +18,7 @@ public class puzzle {
     private double blankX1; // koordinat x paling kanan dari tile kosong
     private double blankY0; // koordinat y paling kiri dari tile kosong
     private double blankY1; // koordinat y paling kanan dari tile kosong
+    private double batasKananDanBawah;
 
     public puzzle(int n ,Label[] tiles, Pane pane){
         this.solveableStatus = false;
@@ -25,6 +26,7 @@ public class puzzle {
         this.pane = pane;
         this.tiles = tiles;
         this.n = n;
+        this.batasKananDanBawah = 100 * n;
     }
 
     // swap isi antara dua tiles
@@ -44,6 +46,7 @@ public class puzzle {
             //jika tiles yang diklik berada di kanan tiles blank
             if(event.getX()>=blankX0+100 && 
                 event.getX()<=blankX1+100 &&
+                event.getX()<=batasKananDanBawah &&
                 event.getY()>=blankY0 &&
                 event.getY()<=blankY1
                 ){
@@ -79,7 +82,8 @@ public class puzzle {
             } else if(event.getX()>=blankX0 && 
                 event.getX()<=blankX1 &&
                 event.getY()>=blankY0+100 &&
-                event.getY()<=blankY1+100
+                event.getY()<=blankY1+100 &&
+                event.getY()<=batasKananDanBawah
             ){
                 swapContent(tiles[blankTileIndex], tiles[blankTileIndex+n]);
                 blankTileIndex = blankTileIndex+n;
