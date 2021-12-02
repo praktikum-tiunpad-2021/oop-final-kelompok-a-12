@@ -31,7 +31,7 @@ This repository is a final project (Java GUI) from Object-Oriented Programming C
 
 ## Running The App
 
-- Menggunakan Gradle
+- **Menggunakan Gradle**
 1. Sesuaikan directori pada CMD atau Terminal pada folder [fifteenPuzzleGradle](fifteenPuzzleGradle)
 
 2. Dalam direktori tersebut jalankan :
