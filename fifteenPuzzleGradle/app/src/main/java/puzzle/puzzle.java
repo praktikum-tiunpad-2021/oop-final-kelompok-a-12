@@ -7,26 +7,28 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 
 
-public class puzzle {
+public class Puzzle {
     private Pane pane;
     private Label[] tiles;
     private Button green;
     private boolean solveableStatus;
     private int n;
     private int blankTileIndex;
+    private int moves;
     private double blankX0; // koordinat x paling kiri dari tile kosong
     private double blankX1; // koordinat x paling kanan dari tile kosong
     private double blankY0; // koordinat y paling kiri dari tile kosong
     private double blankY1; // koordinat y paling kanan dari tile kosong
     private double batasKananDanBawah;
 
-    public puzzle(int n ,Label[] tiles, Pane pane){
+    public Puzzle(int n ,Label[] tiles, Pane pane){
         this.solveableStatus = false;
         this.green = new Button();
         this.pane = pane;
         this.tiles = tiles;
         this.n = n;
         this.batasKananDanBawah = 100 * n;
+        this.moves = 0;
     }
 
     // swap isi antara dua tiles
@@ -42,7 +44,8 @@ public class puzzle {
 
     // logika dalam klik dari mouse beserta listener koordinat mouse
     public void tilesMovement(){
-        pane.setOnMousePressed(event -> {  
+        pane.setOnMousePressed(event -> {
+            moves += 1;  
             //jika tiles yang diklik berada di kanan tiles blank
             if(event.getX()>=blankX0+100 && 
                 event.getX()<=blankX1+100 &&
@@ -129,6 +132,7 @@ public class puzzle {
     // dijalankan ketika tombol reset ditekan
     public void resetPuzzle(Button reset){
         solveableStatus = false;
+        moves = 0;
         pane.getChildren().removeAll(tiles);
         initialContent();
         pane.getChildren().addAll(tiles);
@@ -245,7 +249,7 @@ public class puzzle {
     // memberikan view button hijau sebagai penanda puzzle telah selesai tersusun
     public void finishedView(){
         green.setStyle("-fx-background-color: #00ff00;-fx-font: 20 arial;");
-        green.setText("Selesai!");
+        green.setText("\t\tSelesai!\nLangkah Yang Dilakukan : " + moves);
         green.setOpacity(1.0);
         pane.getChildren().add(green);
         green.setMinHeight(n*100);

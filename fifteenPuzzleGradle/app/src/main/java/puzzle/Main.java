@@ -35,7 +35,7 @@ public class Main extends Application{
         Label[] tiles = new Label[n*n];
         Pane pane = new Pane();
         Button reset = new Button("Reset Puzzle");
-        puzzle fifPuz = new puzzle(n,tiles, pane);
+        Puzzle fifPuz = new Puzzle(n,tiles, pane);
         
         fifPuz.initialContent();            // mengisi angka
         pane.getChildren().addAll(tiles);   // meletakkan label tiles pada pane
