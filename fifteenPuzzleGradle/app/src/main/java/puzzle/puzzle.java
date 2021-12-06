@@ -10,7 +10,7 @@ import javafx.scene.layout.Pane;
 public class Puzzle {
     private Pane pane;
     private Label[] tiles;
-    private Button green;
+    private Button greenPanel;
     private boolean solveableStatus;
     private int n;
     private int blankTileIndex;
@@ -19,15 +19,15 @@ public class Puzzle {
     private double blankX1; // koordinat x paling kanan dari tile kosong
     private double blankY0; // koordinat y paling kiri dari tile kosong
     private double blankY1; // koordinat y paling kanan dari tile kosong
-    private double batasKananDanBawah;
+    private double bottomAndRightLimit;
 
     public Puzzle(int n ,Label[] tiles, Pane pane){
         this.solveableStatus = false;
-        this.green = new Button();
+        this.greenPanel = new Button();
         this.pane = pane;
         this.tiles = tiles;
         this.n = n;
-        this.batasKananDanBawah = 100 * n;
+        this.bottomAndRightLimit = 100 * n;
         this.moves = 0;
     }
 
@@ -49,7 +49,7 @@ public class Puzzle {
             //jika tiles yang diklik berada di kanan tiles blank
             if(event.getX()>=blankX0+100 && 
                 event.getX()<=blankX1+100 &&
-                event.getX()<=batasKananDanBawah &&
+                event.getX()<=bottomAndRightLimit &&
                 event.getY()>=blankY0 &&
                 event.getY()<=blankY1
                 ){
@@ -86,7 +86,7 @@ public class Puzzle {
                 event.getX()<=blankX1 &&
                 event.getY()>=blankY0+100 &&
                 event.getY()<=blankY1+100 &&
-                event.getY()<=batasKananDanBawah
+                event.getY()<=bottomAndRightLimit
             ){
                 swapContent(tiles[blankTileIndex], tiles[blankTileIndex+n]);
                 blankTileIndex = blankTileIndex+n;
@@ -138,7 +138,7 @@ public class Puzzle {
         pane.getChildren().addAll(tiles);
         setTilesPosition();
         setBlankPosition();
-        pane.getChildren().remove(green);
+        pane.getChildren().remove(greenPanel);
     }
 
     // melakukan pengisian angka acak pada label tiles
@@ -248,13 +248,13 @@ public class Puzzle {
 
     // memberikan view button hijau sebagai penanda puzzle telah selesai tersusun
     public void finishedView(){
-        green.setStyle("-fx-background-color: #00ff00;-fx-font: 20 arial;");
-        green.setText("\t\tSelesai!\nLangkah Yang Dilakukan : " + moves);
-        green.setOpacity(1.0);
-        pane.getChildren().add(green);
-        green.setMinHeight(n*100);
-        green.setMinWidth(n*100);
-        green.setLayoutX(0);
+        greenPanel.setStyle("-fx-background-color: #00ff00;-fx-font: 20 arial;");
+        greenPanel.setText("\t\tSelesai!\nLangkah Yang Dilakukan : " + moves);
+        greenPanel.setOpacity(1.0);
+        pane.getChildren().add(greenPanel);
+        greenPanel.setMinHeight(n*100);
+        greenPanel.setMinWidth(n*100);
+        greenPanel.setLayoutX(0);
     }
 
     // melakukan shuffle pada array 1D
