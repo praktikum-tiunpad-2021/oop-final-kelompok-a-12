@@ -25,7 +25,7 @@ public class Main extends Application{
         } 
 
         int n = 4;
-        if(side!=null){
+        if(side!=null && Character.getNumericValue(side.charAt(1)) >= 3){
             n =Character.getNumericValue(side.charAt(1));
         }
         // kustomisasi ukuran dengan menjalankan 

@@ -42,8 +42,19 @@ This repository is a final project (Java GUI) from Object-Oriented Programming C
 
 ![UML](https://github.com/praktikum-tiunpad-2021/oop-final-kelompok-a-12/blob/master/UML.jpg)
 
-UML image here
 
 ## Notable Assumption and Design App Details
 
-TO;DO
+- Aplikasi puzzle dijalankan secara default dengan ukuran 4 x 4.
+- Customisasi ukurang dapat dilakukan dengan passing pada args saat menjalankan aplikasi *dengan catatan dibatasi ukuran terkecil n = 3 dan ukuran maksimal yang diharapkan tidak melebihi resolusi layar agar puzzle masuk akal untuk dimainkan*.
+- Secara default tampilan telah teracak dan tersedia tombol `reset puzzle` untuk mengacak ulang puzzle.
+- Pengacakan puzzle menggunakan penghitungan inversi agar hasil acak mungkin diselesaikan dengan detail sebagai berikut :
+	*inversi adalah ketika suatu angka pada posisi tertentu didahului angka yang lebih besar*
+	*contoh : 2 1 3 4 , terdapat 1 buah inversi pada (2 , 1)*
+	- Apabila jumlah sisi atau `n = ganjil` maka inversi harus berjumlah genap.
+	- Apabila jumlah sisi atau `n = genap` :
+ 		- ketika letak tiles kosong dari baris paling bawah adalah ganjil, total inversi harus genap.
+ 		- ketika letak tiles kosong dari baris paling bawah adalah genap, total inversi harus ganjil.
+- Tiap klik mouse dari user akan dicek koordinatnya relatif dari tiles kosong agar bisa melakukan sebuah langkah pergerakan.
+- Setiap 1 langkah akan dicek apakah puzzle telah terurut dan jika sudah akan diberi tampilan permainan selesai.
+- Akhir permainan akan diberi tampilan jumlah langkah yang dilakukan user dalam menyelesaikan permainan.
