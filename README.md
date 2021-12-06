@@ -40,7 +40,7 @@ This repository is a final project (Java GUI) from Object-Oriented Programming C
 
 ## Classes Used
 
-![UML](https://github.com/praktikum-tiunpad-2021/oop-final-kelompok-a-12/UML.jpg)
+![UML](https://github.com/praktikum-tiunpad-2021/oop-final-kelompok-a-12/blob/master/UML.jpg)
 
 UML image here
 
