@@ -47,6 +47,7 @@ This repository is a final project (Java GUI) from Object-Oriented Programming C
 
 - Aplikasi puzzle dijalankan secara default dengan ukuran 4 x 4.
 - Customisasi ukuran dapat dilakukan dengan passing pada args saat menjalankan aplikasi 
+
    **catatan dibatasi ukuran terkecil n = 3 dan ukuran maksimal yang diharapkan tidak melebihi resolusi layar agar puzzle masuk akal untuk dimainkan.**
 - Secara default tampilan telah teracak dan tersedia tombol `reset puzzle` untuk mengacak ulang puzzle.
 - Pengacakan puzzle menggunakan penghitungan inversi agar hasil acak mungkin diselesaikan dengan detail sebagai berikut :
