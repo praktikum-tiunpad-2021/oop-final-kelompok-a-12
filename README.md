@@ -26,8 +26,8 @@ This repository is a final project (Java GUI) from Object-Oriented Programming C
    - Menambahkan pergerakan dengan mouse listener
    
 - **[Sprint 3](changelog/sprint-3.md) - (30/11/2021 - 6/12/2021)** 
-   - Short changes 1
-   - Short changes 2
+   - Menambahkan move counter
+
 
 ## Running The App
 

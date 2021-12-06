@@ -1,7 +1,7 @@
 # Sprint Planning 
 | 22/11/2021
 
-### Team (Insert your name)
+### Team 
 | NPM           | Name        |
 | ------------- |-------------|
 | 140810200021  | Rifqi Akmal Fauzi    |
