@@ -1,26 +1,27 @@
 # Scrum Report (Sprint 3)
-| From dd/mm/yyyy to dd/mm/yyyy
+| From 30/11/2021 to 6/12/2021
 
-## Team (Insert your name)
+## Team 
 | NPM           | Name        |
 | ------------- |-------------|
-| 140810xx00xx  | John Doe    |
-| 140810xx00xx  | Jane Doe    |
-| 140810xx00xx  | Lorem Ipsum |
+| 140810200021  | Rifqi Akmal Fauzi    |
+| 140810200031  | Ahmad Yahya Salim    |
+| 140810200055  | Wafa Tsabita |
 
 ## Sprint Overview
 | Planned (n)   | Completed (n) |
 | ------------- |-------------- |
-| n             | n             |
+| 2             | 1             |
 
 ## Sprint 3 Backlog
 
 | ID  | Title/Desc | Asignee | Status |
 | --- | ---------- | ------- | ------ |
-| 3.1 | Preparing the x | Jane Doe | DONE |
-| 3.2 | Make the x | John Doe | FAILED |
+| 3.1 | Membuat animasi ketika ubin di klik | semua | FAILED |
+| 3.2 | Memeriksa error dan improve tampilan | semua | DONE |
+
 
 ## Retrospective 
 
-Sprint kemarin dianggap terlalu sedikit sehingga diperlukan adanya penyesuaian tugas. Lorem ipsum dolor sit amet
+Terkendala implementasi animasi pada struktur kode yang sekarang
 

@@ -1,7 +1,7 @@
 # Scrum Report (Sprint 2)
 | From 23/11/2021 to 29/11/2021
 
-## Team (Insert your name)
+## Team 
 | NPM           | Name        |
 | ------------- |-------------|
 | 140810200021  | Rifqi Akmal Fauzi    |
