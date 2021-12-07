@@ -61,3 +61,5 @@ This repository is a final project (Java GUI) from Object-Oriented Programming C
 - Tiap klik mouse dari user akan dicek koordinatnya relatif dari tiles kosong agar bisa melakukan sebuah langkah pergerakan.
 - Setiap 1 langkah akan dicek apakah puzzle telah terurut dan jika sudah akan diberi tampilan permainan selesai.
 - Akhir permainan akan diberi tampilan jumlah langkah yang dilakukan user dalam menyelesaikan permainan.
+
+![Example](https://github.com/praktikum-tiunpad-2021/oop-final-kelompok-a-12/blob/master/RunningAppExample.png)
